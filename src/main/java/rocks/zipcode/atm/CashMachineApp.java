@@ -1,5 +1,6 @@
 package rocks.zipcode.atm;
 
+import javafx.scene.control.Alert;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -20,8 +21,8 @@ public class CashMachineApp extends Application {
     private CashMachine cashMachine = new CashMachine(new Bank());
 
     private Parent createContent() {
-        VBox vbox = new VBox(100);
-        vbox.setPrefSize(850, 600);
+        VBox vbox = new VBox(50);
+        vbox.setPrefSize(850, 850);
 
         TextArea areaInfo = new TextArea();
 
@@ -35,7 +36,7 @@ public class CashMachineApp extends Application {
 
         Button btnDeposit = new Button("Deposit");
         btnDeposit.setOnAction(e -> {
-            int amount = Integer.parseInt(field.getText());
+           Float amount = Float.parseFloat(field.getText());
             cashMachine.deposit(amount);
 
             areaInfo.setText(cashMachine.toString());
@@ -43,8 +44,20 @@ public class CashMachineApp extends Application {
 
         Button btnWithdraw = new Button("Withdraw");
         btnWithdraw.setOnAction(e -> {
-            int amount = Integer.parseInt(field.getText());
+            Alert overdrawn = new Alert(Alert.AlertType.NONE);
+            Float amount = Float.parseFloat(field.getText());
             cashMachine.withdraw(amount);
+            if(amount < 0) {
+                // set alert type
+                overdrawn.setAlertType(Alert.AlertType.INFORMATION);
+
+                // set content text
+                overdrawn.setContentText("Cannot draw a negative amount");
+
+                // show the dialog
+                overdrawn.show();
+
+            }
 
             areaInfo.setText(cashMachine.toString());
         });
