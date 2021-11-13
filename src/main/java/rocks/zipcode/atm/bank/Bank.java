@@ -13,12 +13,20 @@ public class Bank {
     private Map<Integer, Account> accounts = new HashMap<>();
 
     public Bank() {
-        accounts.put(1000, new BasicAccount(new AccountData(
-                1000, "Example 1", "example1@gmail.com", 500
+        accounts.put(1, new BasicAccount(new AccountData(
+                1, "Example 1", "example1@gmail.com", 500
         )));
 
         accounts.put(2000, new PremiumAccount(new AccountData(
-                2000, "Example 2", "example2@gmail.com", 200
+                2, "Example 2", "example2@gmail.com", 200
+        )));
+
+        accounts.put(1000, new BasicAccount(new AccountData(
+                3, "Example 1", "example1@gmail.com", 500
+        )));
+
+        accounts.put(2000, new PremiumAccount(new AccountData(
+                3, "Example 2", "example2@gmail.com", 200
         )));
     }
 

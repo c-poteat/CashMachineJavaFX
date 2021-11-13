@@ -30,6 +30,7 @@ public final class AccountData {
         return email;
     }
 
+
     public int getBalance() {
         return balance;
     }

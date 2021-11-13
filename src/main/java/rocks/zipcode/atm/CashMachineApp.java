@@ -20,8 +20,8 @@ public class CashMachineApp extends Application {
     private CashMachine cashMachine = new CashMachine(new Bank());
 
     private Parent createContent() {
-        VBox vbox = new VBox(10);
-        vbox.setPrefSize(600, 600);
+        VBox vbox = new VBox(100);
+        vbox.setPrefSize(850, 600);
 
         TextArea areaInfo = new TextArea();
 
