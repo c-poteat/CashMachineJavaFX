@@ -1,6 +1,9 @@
 package rocks.zipcode.atm;
 
 import javafx.scene.control.Alert;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -16,33 +19,72 @@ import javafx.scene.layout.FlowPane;
  * @author ZipCodeWilmington
  */
 public class CashMachineApp extends Application {
+    Button btnLogin;
+    Button btnSubmit;
+    Button btnDeposit;
+    Button btnWithdraw;
+    int password;
+
 
     private TextField field = new TextField();
     private CashMachine cashMachine = new CashMachine(new Bank());
 
+    private void disableButtons() {
+        btnDeposit.setVisible(false);
+        btnSubmit.setVisible(false);
+        btnWithdraw.setVisible(false);
+        disableButtons();
+    }
+
     private Parent createContent() {
-        VBox vbox = new VBox(50);
-        vbox.setPrefSize(850, 850);
+
+        VBox vbox = new VBox(20);
+        vbox.setPrefSize(500, 450);
 
         TextArea areaInfo = new TextArea();
+        areaInfo.setPrefHeight(75);
+        areaInfo.setPrefWidth(100);
+        btnLogin = new Button("Please Login");
 
-        Button btnSubmit = new Button("Set Account ID");
+        btnLogin.setTranslateX(10);
+        btnLogin.setTranslateY(50);
+        btnLogin.setStyle("-fx-font: 20 arial; -fx-base: #db6204;");
+        btnLogin.setOnAction(e -> {
+
+                password = Integer.parseInt(field.getText());
+                password = 1007;
+                cashMachine.login(password);
+               areaInfo.setText(cashMachine.toString());
+
+            });
+
+
+        btnSubmit = new Button("Set Account ID");
+        btnSubmit.setTranslateX(30);
+        btnSubmit.setTranslateY(200);
+        btnSubmit.setStyle("-fx-font: 20 arial; -fx-base: #db6204;");
         btnSubmit.setOnAction(e -> {
             int id = Integer.parseInt(field.getText());
             cashMachine.login(id);
 
-            areaInfo.setText(cashMachine.toString());
+           areaInfo.setText(cashMachine.toString());
         });
 
-        Button btnDeposit = new Button("Deposit");
+        btnDeposit = new Button("Deposit");
+        btnDeposit.setTranslateX(50);
+        btnDeposit.setTranslateY(200);
+        btnDeposit.setStyle("-fx-font: 20 arial; -fx-base: #db6204;");
         btnDeposit.setOnAction(e -> {
            Float amount = Float.parseFloat(field.getText());
             cashMachine.deposit(amount);
 
-            areaInfo.setText(cashMachine.toString());
+           areaInfo.setText(cashMachine.toString());
         });
 
-        Button btnWithdraw = new Button("Withdraw");
+        btnWithdraw = new Button("Withdraw");
+        btnWithdraw.setTranslateX(25);
+        btnWithdraw.setTranslateY(163);
+        btnWithdraw.setStyle("-fx-font: 20 arial; -fx-base: #db6204;");
         btnWithdraw.setOnAction(e -> {
             Alert overdrawn = new Alert(Alert.AlertType.NONE);
             Float amount = Float.parseFloat(field.getText());
@@ -59,10 +101,13 @@ public class CashMachineApp extends Application {
 
             }
 
-            areaInfo.setText(cashMachine.toString());
+           areaInfo.setText(cashMachine.toString());
         });
 
-        Button btnExit = new Button("Exit");
+        Button btnExit = new Button("Reset");
+        btnExit.setTranslateX(60);
+        btnExit.setTranslateY(220);
+        btnExit.setStyle("-fx-font: 20 arial; -fx-base: #db6204;");
         btnExit.setOnAction(e -> {
             cashMachine.exit();
 
@@ -71,6 +116,7 @@ public class CashMachineApp extends Application {
 
         FlowPane flowpane = new FlowPane();
 
+        flowpane.getChildren().add(btnLogin);
         flowpane.getChildren().add(btnSubmit);
         flowpane.getChildren().add(btnDeposit);
         flowpane.getChildren().add(btnWithdraw);
@@ -78,6 +124,9 @@ public class CashMachineApp extends Application {
         vbox.getChildren().addAll(field, flowpane, areaInfo);
         return vbox;
     }
+
+
+
 
     @Override
     public void start(Stage stage) throws Exception {
