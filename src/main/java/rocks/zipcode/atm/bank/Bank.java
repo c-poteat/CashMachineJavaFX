@@ -13,12 +13,18 @@ public class Bank {
     private Map<Integer, Account> accounts = new HashMap<>();
 
     public Bank() {
-        accounts.put(1000, new BasicAccount(new AccountData(
-                1000, "Example 1", "example1@gmail.com", 500
+        accounts.put(10, new BasicAccount(new AccountData(
+                10, "Darth Vader", "deathstar@gmail.com", 1500.25
         )));
 
-        accounts.put(2000, new PremiumAccount(new AccountData(
-                2000, "Example 2", "example2@gmail.com", 200
+        accounts.put(20, new PremiumAccount(new AccountData(
+                20, "Clark Kent", "dailyplanet@gmail.com", 2156.56
+        )));
+        accounts.put(30, new BasicAccount(new AccountData(
+                30, "Norman Bates", "batesmotel@gmail.com", -298.23
+        )));
+        accounts.put(40, new PremiumAccount(new AccountData(
+                40, "Marty McFly", "backIIthefuture@gmail.com", 6008.58
         )));
     }
 
@@ -28,18 +34,18 @@ public class Bank {
         if (account != null) {
             return ActionResult.success(account.getAccountData());
         } else {
-            return ActionResult.fail("No account with id: " + id + "\nTry account 1000 or 2000");
+            return ActionResult.fail("No account with id: " + id + "\nTry account 10, 20, 30, 40");
         }
     }
 
-    public ActionResult<AccountData> deposit(AccountData accountData, int amount) {
+    public ActionResult<AccountData> deposit(AccountData accountData, Float amount) {
         Account account = accounts.get(accountData.getId());
         account.deposit(amount);
 
         return ActionResult.success(account.getAccountData());
     }
 
-    public ActionResult<AccountData> withdraw(AccountData accountData, int amount) {
+    public ActionResult<AccountData> withdraw(AccountData accountData, Float amount) {
         Account account = accounts.get(accountData.getId());
         boolean ok = account.withdraw(amount);
 
