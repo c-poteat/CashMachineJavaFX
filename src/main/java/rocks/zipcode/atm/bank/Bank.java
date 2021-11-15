@@ -25,6 +25,7 @@ public class Bank {
         )));
         accounts.put(40, new PremiumAccount(new AccountData(
                 40, "Marty McFly", "backIIthefuture@gmail.com", 6008.58f
+
         )));
     }
 
@@ -33,16 +34,17 @@ public class Bank {
 
         if (account != null) {
             return ActionResult.success(account.getAccountData());
+
         } else {
-            return ActionResult.fail("No account with id: " + id + "\nTry account 10, 20, 30, 40");
+            return ActionResult.fail("No account with id: " + id + "\nTry account numbers 10, 20, 30, 40");
         }
     }
 
     public ActionResult<AccountData> deposit(AccountData accountData, Float amount) {
-        Account account = accounts.get(accountData.getId());
-        account.deposit(amount);
+            Account account = accounts.get(accountData.getId());
 
-        return ActionResult.success(account.getAccountData());
+            account.deposit(amount);
+                return ActionResult.success(account.getAccountData());
     }
 
     public ActionResult<AccountData> withdraw(AccountData accountData, Float amount) {
@@ -51,8 +53,13 @@ public class Bank {
 
         if (ok) {
             return ActionResult.success(account.getAccountData());
+
         } else {
             return ActionResult.fail("Withdraw failed: " + amount + ". Account has: " + account.getBalance());
         }
+
     }
+    public Map<Integer, Account> getAccounts() {
+        return accounts;
+  }
 }
