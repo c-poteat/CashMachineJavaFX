@@ -45,7 +45,7 @@ public class CashMachineApp extends Application {
         btnDeposit.setOnAction(e -> {
 
             int amount = Integer.parseInt(field2.getText());
-            cashMachine.deposit(amount);
+            cashMachine.deposit((float) amount);
 
             areaInfo.setText(cashMachine.toString());
 
