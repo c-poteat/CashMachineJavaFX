@@ -1,12 +1,10 @@
 package rocks.zipcode.atm;
-import com.sun.javafx.scene.text.TextLayoutFactory;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.StageStyle;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
@@ -39,7 +37,7 @@ private CashMachine cashMachine = new CashMachine(new Bank());
         deposit.setMaxWidth(175);
         deposit.setTranslateX(300);
         deposit.setTranslateY(100);
-        accountId.setTranslateX(50);
+        accountId.setTranslateX(30);
         accountId.setTranslateY(133);
         accountId.setMaxWidth(175);
 
