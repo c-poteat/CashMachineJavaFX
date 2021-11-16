@@ -53,6 +53,8 @@ public class Bank {
 
         if (ok) {
             return ActionResult.success(account.getAccountData());
+        } else if(amount < 0) {
+            return ActionResult.fail("Withdraw failed: Cannot withdraw negative numbers");
 
         } else {
             return ActionResult.fail("Withdraw failed: " + amount + ". Account has: " + account.getBalance());
