@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
 
 
-
 /**
  * @author ZipCodeWilmington
  */
@@ -23,7 +22,6 @@ public class CashMachineApp extends Application {
         Button btnClear;
         Button btnExit;
         Float OVERDRAFT_LIMIT = Float.valueOf(100);
-//        Button btnAllAccounts;
 
 private TextField accountId = new TextField();
 private TextField deposit = new TextField();
@@ -129,26 +127,14 @@ private CashMachine cashMachine = new CashMachine(new Bank());
 
         });
 
-//                btnAllAccounts = new Button("All Accounts");
-//                btnAllAccounts.setTranslateX(300);
-//                btnAllAccounts.setTranslateY(250);
-//                btnAllAccounts.setStyle("-fx-font: 15 arial; -fx-base: #0A8B54;");
-//                btnAllAccounts.setOnAction(e -> {
-
-//                        areaInfo.setText(cashMachine.toString());
-//                });
-
         FlowPane flowpane = new FlowPane();
         flowpane.getChildren().add(btnSubmit);
         flowpane.getChildren().add(btnDeposit);
         flowpane.getChildren().add(btnWithdraw);
         flowpane.getChildren().add(btnClear);
         flowpane.getChildren().add(btnExit);
-//                flowpane.getChildren().add(btnAllAccounts);
         vbox.getChildren().addAll(accountId, deposit, withdraw, flowpane, areaInfo);
         return vbox;
-
-
     }
 
 @Override
@@ -165,14 +151,10 @@ public void start(Stage stage) throws Exception {
         btnClear.setVisible(false);
         btnExit.setVisible(false);
 
-//        btnAllAccounts.setVisible(false);
-
  }
-
 public static void main(String[] args) {
         launch(args);
         }
 }
 
-///
 
