@@ -43,7 +43,7 @@ public class CashMachine {
     public void withdraw(Float amount) {
         if (accountData != null) {
             tryCall(
-                    () -> bank.withdraw(accountData, (float) amount),
+                    () -> bank.withdraw(accountData,amount),
                     update
 
             );

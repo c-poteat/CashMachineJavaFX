@@ -106,12 +106,12 @@ private CashMachine cashMachine = new CashMachine(new Bank());
         btnWithdraw.setStyle("-fx-font: 15 arial; -fx-base: #0A8B54;");
         btnWithdraw.setOnAction(e -> {
             Float amount = Float.parseFloat(withdraw.getText());
-              if (amount < 0) {
-                  areaInfo.setText("Sorry, you can not withdraw a negative amount");
-              } else {
+//              if (amount < 0) {
+//                  areaInfo.setText("Sorry, you can not withdraw a negative amount");
+//              } else {
                   cashMachine.withdraw(amount);
                   areaInfo.setText(cashMachine.toString());
-              }
+
         });
         btnClear = new Button("Clear");
         btnClear.setTranslateX(85);

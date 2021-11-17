@@ -3,6 +3,7 @@ package rocks.zipcode.atm.bank;
 import rocks.zipcode.atm.ActionResult;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -42,8 +43,8 @@ public class Bank {
 
     public ActionResult<AccountData> deposit(AccountData accountData, Float amount) {
             Account account = accounts.get(accountData.getId());
-
             account.deposit(amount);
+
                 return ActionResult.success(account.getAccountData());
     }
 
@@ -53,15 +54,17 @@ public class Bank {
 
         if (ok) {
             return ActionResult.success(account.getAccountData());
-        } else if(amount < 0) {
-            return ActionResult.fail("Withdraw failed: Cannot withdraw negative numbers");
+//        } else if(amount < 0) {
+//            return ActionResult.fail("Withdraw failed: Cannot withdraw negative numbers");
 
         } else {
             return ActionResult.fail("Withdraw failed: " + amount + ". Account has: " + account.getBalance());
         }
 
     }
+
     public Map<Integer, Account> getAccounts() {
         return accounts;
-  }
+    }
 }
+
