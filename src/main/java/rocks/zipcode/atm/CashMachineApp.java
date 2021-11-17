@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
+import rocks.zipcode.atm.bank.PremiumAccount;
 
 /**
  * @author ZipCodeWilmington
@@ -22,12 +23,16 @@ public class CashMachineApp extends Application {
     private Button btnWithdraw;
     private Button btnClear;
     private Button btnExit;
-    Float OVERDRAFT_LIMIT = Float.valueOf(100);
+    private PremiumAccount premiumAccount;
 
 private TextField accountId = new TextField();
 private TextField deposit = new TextField();
 private TextField withdraw = new TextField();
 
+
+public float getPremiumAcct() {
+    return premiumAccount.getBalance();
+}
 private CashMachine cashMachine = new CashMachine(new Bank());
 
     private Parent createContent() {
@@ -106,12 +111,13 @@ private CashMachine cashMachine = new CashMachine(new Bank());
         btnWithdraw.setStyle("-fx-font: 15 arial; -fx-base: #0A8B54;");
         btnWithdraw.setOnAction(e -> {
             Float amount = Float.parseFloat(withdraw.getText());
-//              if (amount < 0) {
-//                  areaInfo.setText("Sorry, you can not withdraw a negative amount");
+            if (amount < 0) {
+                areaInfo.setText("Sorry, you can not withdraw a negative amount");
+//            } else if(amount )
 //              } else {
-                  cashMachine.withdraw(amount);
-                  areaInfo.setText(cashMachine.toString());
-
+                cashMachine.withdraw(amount);
+                areaInfo.setText(cashMachine.toString());
+            }
         });
         btnClear = new Button("Clear");
         btnClear.setTranslateX(85);

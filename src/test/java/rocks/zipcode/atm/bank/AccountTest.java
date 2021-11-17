@@ -18,7 +18,7 @@ public class AccountTest {
 
 
         // Expected
-        Float expected = 1500.25f + 100.00f;
+        Float expected = 1045658.89f + 100.00f;
         Float actual = account.getBalance();
 
         Assert.assertEquals(actual, expected);
@@ -35,7 +35,7 @@ public class AccountTest {
 
 
         // Expected
-        Float expected = 1500.25f - 100.00f;
+        Float expected = 1045658.89f - 100.00f;
         Float actual = account.getBalance();
 
         Assert.assertEquals(actual, expected);

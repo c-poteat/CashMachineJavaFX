@@ -37,7 +37,7 @@ public abstract class Account<amount> {
             }
 
             private void updateBalance (float newBalance){
-                accountData = new AccountData(accountData.getId(), accountData.getName(), accountData.getEmail(),
+                accountData = new AccountData(accountData.getId(), accountData.getAcctType(), accountData.getName(), accountData.getEmail(),
                         newBalance);
             }
 

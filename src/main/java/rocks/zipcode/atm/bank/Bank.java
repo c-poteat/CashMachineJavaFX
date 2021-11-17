@@ -15,17 +15,17 @@ public class Bank {
 
     public Bank() {
         accounts.put(10, new BasicAccount(new AccountData(
-                10, "Darth Vader", "deathstar@gmail.com", 1500.25f
+                10,"Basic","Bruce Wayne", "brucewayne.wayneenterprises@google.com", 1045658.89f
         )));
 
         accounts.put(20, new PremiumAccount(new AccountData(
-                20, "Clark Kent", "dailyplanet@gmail.com", 2156.56f
+                20, "Premium","Clark Kent" , "clarkkent.dailyplanet@gmail.com", 51456.58f
         )));
         accounts.put(30, new BasicAccount(new AccountData(
-                30, "Norman Bates", "batesmotel@gmail.com", -298.23f
+                30, "Basic", "Steve Rogers", "steveRogers1.@army.mil", 23423479.23f
         )));
         accounts.put(40, new PremiumAccount(new AccountData(
-                40, "Marty McFly", "backIIthefuture@gmail.com", 6008.58f
+                40, "Premium", "Peter Parker", "peterparker@midtownhigh.edu", 1232146f
 
         )));
     }
@@ -54,9 +54,6 @@ public class Bank {
 
         if (ok) {
             return ActionResult.success(account.getAccountData());
-//        } else if(amount < 0) {
-//            return ActionResult.fail("Withdraw failed: Cannot withdraw negative numbers");
-
         } else {
             return ActionResult.fail("Withdraw failed: " + amount + ". Account has: " + account.getBalance());
         }
